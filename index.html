@@ -4,61 +4,72 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>J’RÉNOV — Électricité & Aménagement intérieur</title>
-  <meta name="description" content="Électricité, placo et aménagement intérieur. Interventions rapides, finitions soignées, devis gratuit." />
+
+  <!-- SEO -->
+  <meta name="description" content="Électricité générale & aménagement intérieur. Dépannages 7j/7, placo, éclairage, rénovations. Devis gratuit." />
   <meta property="og:title" content="J’RÉNOV — Électricité & Aménagement intérieur" />
-  <meta property="og:description" content="Électricité générale, rénovations, placo & faux-plafonds, dépannages 7j/7. Devis gratuit." />
+  <meta property="og:description" content="Tableaux, prises, éclairage, cloisons, faux-plafonds. Travaux soignés, délais respectés." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="assets/logo-jd-jrenov.png" />
   <meta name="theme-color" content="#0f172a" />
+  <!-- Remplace par ton code Search Console -->
   <meta name="google-site-verification" content="PASTE_SEARCH_CONSOLE_CODE_HERE" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <!-- Favicons -->
   <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
   <link rel="manifest" href="manifest.webmanifest">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   <style>
-    :root{--bg:#0f172a;--ink:#0f172a;--muted:#64748b;--brand:#2563eb;--card:#ffffff}
+    :root{--ink:#0f172a;--muted:#64748b;--brand:#2563eb;--card:#ffffff}
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:#0f172a;background:#f8fafc}
+    html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);background:#f8fafc}
     a{color:var(--brand);text-decoration:none}
-    img{max-width:100%;height:auto}
+    img{max-width:100%;height:auto;display:block}
     .container{max-width:1150px;margin:0 auto;padding:0 20px}
-    header{position:sticky;top:0;backdrop-filter:saturate(180%) blur(8px);background:rgba(255,255,255,.85);border-bottom:1px solid #e5e7eb;z-index:50}
+
+    header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(180%) blur(8px);background:rgba(255,255,255,.85);border-bottom:1px solid #e5e7eb}
     .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
     .logo{display:flex;align-items:center;gap:12px}
     .logo img{width:36px;height:36px;border-radius:8px;object-fit:cover}
-    .btn{display:inline-block;padding:12px 18px;border-radius:14px;font-weight:600;background:var(--brand);color:#fff;border:2px solid var(--brand);transition:.2s}
+    .btn{display:inline-block;padding:12px 18px;border-radius:14px;font-weight:700;background:var(--brand);color:#fff;border:2px solid var(--brand);transition:.2s}
+    .btn:hover{filter:brightness(.95);transform:translateY(-1px)}
     .btn.alt{background:transparent;color:var(--brand)}
+
     .hero{padding:72px 0 32px;background:linear-gradient(180deg,#ffffff,#f1f5f9)}
     .hero-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
-    .hero h1{font-size:clamp(28px,4vw,48px);line-height:1.08;margin:0 0 12px}
+    .hero h1{font-size:clamp(28px,4vw,48px);line-height:1.08;margin:0 0 10px}
     .muted{color:var(--muted)}
-    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .card{background:var(--card);border:1px solid #e5e7eb;border-radius:18px;padding:22px;box-shadow:0 1px 0 rgba(15,23,42,.04)}
+    .card{background:#fff;border:1px solid #e5e7eb;border-radius:18px;padding:22px;box-shadow:0 1px 0 rgba(15,23,42,.04)}
+
     .sect{padding:56px 0}
-    .gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-    .slider{position:relative;border-radius:14px;overflow:hidden;background:#000;min-height:220px}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+
+    /* Carrousel */
+    .gallery{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .slider{position:relative;border-radius:16px;overflow:hidden;background:#0b1220;min-height:260px}
     .slide{position:absolute;inset:0;opacity:0;transition:opacity .6s ease}
     .slide.active{opacity:1}
-    .slider .caption{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(180deg,transparent,rgba(0,0,0,.65));color:#fff;padding:10px 12px;font-weight:600}
-    .dots{position:absolute;right:10px;bottom:10px;display:flex;gap:6px}
-    .dot{width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.5)}
+    .dots{position:absolute;left:50%;transform:translateX(-50%);bottom:10px;display:flex;gap:6px;z-index:2}
+    .dot{width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.45)}
     .dot.active{background:#fff}
+    .cap{position:absolute;left:0;right:0;bottom:0;padding:10px 12px;color:#fff;background:linear-gradient(180deg,transparent,rgba(0,0,0,.6));font-weight:700}
+
     footer{padding:36px 0;border-top:1px solid #e5e7eb;background:#fff;margin-top:40px}
     .badges{display:flex;gap:10px;flex-wrap:wrap}
-    @media (max-width:980px){.hero-grid{grid-template-columns:1fr}.cards{grid-template-columns:1fr 1fr}.gallery-grid{grid-template-columns:1fr}}
+
+    /* WhatsApp en haut à droite */
+    .wa-float{position:fixed;right:18px;top:18px;display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;padding:12px 16px;border-radius:999px;box-shadow:0 10px 25px rgba(0,0,0,.18);z-index:999;font-weight:800}
+    .wa-float svg{width:20px;height:20px}
+
+    @media (max-width:980px){.hero-grid{grid-template-columns:1fr}.cards{grid-template-columns:1fr 1fr}.gallery{grid-template-columns:1fr}}
   </style>
 
-  <!-- GA4 -->
+  <!-- GA4 (remplace G-XXXXXXXXXX) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date()); gtag('config', 'G-XXXXXXXXXX');
-  </script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config','G-XXXXXXXXXX');</script>
 </head>
 <body>
   <header>
@@ -92,10 +103,10 @@
       </div>
       <div class="card">
         <h3>Interventions courantes</h3>
-        <ul>
-          <li><strong>Électricité</strong> — création & rénovation de circuits, tableaux, différentiel, prises & éclairage.</li>
-          <li><strong>Dépannage</strong> — recherche de panne, mise en sécurité.</li>
-          <li><strong>Placo</strong> — cloisons, doublages, <em>faux-plafonds</em>, corniches lumineuses.</li>
+        <ul style="margin:8px 0 0 18px;line-height:1.6">
+          <li><strong>Électricité générale</strong> — circuits, tableaux, différentiel, prises & éclairage.</li>
+          <li><strong>Dépannage</strong> — recherche de panne, remise en sécurité.</li>
+          <li><strong>Placo</strong> — cloisons, doublages, faux-plafonds, corniches lumineuses.</li>
           <li><strong>Rénovation</strong> — cuisine, salle de bain, pièces à vivre.</li>
         </ul>
       </div>
@@ -106,33 +117,34 @@
     <div class="container">
       <h2>Nos services</h2>
       <div class="cards" style="margin-top:12px">
-        <div class="card"><h3>Électricité générale</h3><p>Tableaux, circuits, VMC, prises, éclairage intérieur/extérieur, domotique de base.</p></div>
-        <div class="card"><h3>Dépannage & mise en sécurité</h3><p>Diagnostic, recherche de panne, protections différentielles, mise en sécurité.</p></div>
-        <div class="card"><h3>Placo & aménagement</h3><p>Cloisons, isolation, doublages, faux-plafonds, habillages pour spots LED.</p></div>
+        <div class="card"><h3>Électricité générale</h3><p class="muted">Tableaux, circuits, VMC, prises, éclairage intérieur/extérieur, domotique de base. Mise aux normes NF C 15-100.</p></div>
+        <div class="card"><h3>Dépannage & mise en sécurité</h3><p class="muted">Diagnostic, recherche de panne, remplacement urgent, protections différentielles.</p></div>
+        <div class="card"><h3>Placo & aménagement</h3><p class="muted">Cloisons, isolation, doublages, faux-plafonds, habillages pour spots LED.</p></div>
       </div>
     </div>
   </section>
 
-  <section id="realisations" class="sect">
+  <section id="realisations" class="sect" style="padding-top:0">
     <div class="container">
       <h2>Réalisations</h2>
-      <p class="muted">Diaporamas automatiques — vous pouvez passer la souris/toucher pour mettre en pause.</p>
-      <div class="gallery-grid" style="margin-top:12px">
+      <p class="muted">Diaporamas automatiques. Passez la souris (ou touchez) pour mettre en pause.</p>
+
+      <div class="gallery" style="margin-top:12px">
         <div class="card">
           <h3>Chantier 1 — Salon et charpente apparentes</h3>
-          <div class="slider" data-images='['assets/chantier1-1.jpg','assets/chantier1-2.jpg','assets/chantier1-3.jpg','assets/chantier1-4.jpg','assets/chantier1-5.jpg','assets/chantier1-6.jpg','assets/chantier1-7.jpg']'></div>
+          <div class="slider" data-prefix="chantier1"></div>
         </div>
         <div class="card">
           <h3>Chantier 2 — Aménagement d’un salon de barbier (Le Barbier Rennais)</h3>
-          <div class="slider" data-images='['assets/chantier2-1.jpg','assets/chantier2-2.jpg','assets/chantier2-3.jpg','assets/chantier2-4.jpg']'></div>
+          <div class="slider" data-prefix="chantier2"></div>
         </div>
         <div class="card">
           <h3>Chantier 3 — Rénovation complète, électricité & aménagement</h3>
-          <div class="slider" data-images='['assets/chantier3-1.jpg','assets/chantier3-2.jpg','assets/chantier3-3.jpg','assets/chantier3-4.jpg','assets/chantier3-5.jpg','assets/chantier3-6.jpg','assets/chantier3-7.jpg','assets/chantier3-8.jpg','assets/chantier3-9.jpg','assets/chantier3-10.jpg']'></div>
+          <div class="slider" data-prefix="chantier3"></div>
         </div>
         <div class="card">
           <h3>Chantier 4 — Salle de bain & niches, pierre naturelle</h3>
-          <div class="slider" data-images='['assets/chantier4-1.jpg','assets/chantier4-2.jpg','assets/chantier4-3.jpg','assets/chantier4-4.jpg']'></div>
+          <div class="slider" data-prefix="chantier4"></div>
         </div>
       </div>
     </div>
@@ -149,13 +161,14 @@
           <input type="text" name="_honey" style="display:none">
           <input type="hidden" name="_captcha" value="false">
           <input type="hidden" name="_next" value="/?sent=1">
+          <input type="hidden" name="_subject" value="Demande de devis — JD J’RÉNOV">
+          <input type="hidden" name="_template" value="table">
           <input name="Nom" placeholder="Nom" required />
           <input name="Téléphone" placeholder="Téléphone" />
           <input type="email" name="Email" placeholder="Email" required />
-          <textarea name="Message" placeholder="Décrivez vos travaux…"
-            style="min-height:120px"></textarea>
+          <textarea name="Message" placeholder="Décrivez vos travaux (surface, pièces, délais)…" style="min-height:120px" required></textarea>
           <button class="btn" type="submit">Envoyer ma demande</button>
-          <div class="muted" style="color:#cbd5e1">Nous ne partageons pas vos données.</div>
+          <div class="muted" style="color:#cbd5e1;font-size:12px">Nous ne partageons pas vos données.</div>
         </form>
       </div>
     </div>
@@ -173,30 +186,90 @@
     </div>
   </footer>
 
+  <!-- Bouton WhatsApp (HAUT DROIT) -->
+  <a class="wa-float" href="https://wa.me/33652666837?text=Bonjour%20JD%20J%E2%80%99R%C3%89NOV%2C%20je%20souhaite%20un%20devis" target="_blank" rel="noopener" aria-label="Discuter sur WhatsApp">
+    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill="currentColor" d="M19.11 17.2c-.28-.14-1.62-.8-1.87-.9-.25-.09-.43-.14-.62.14-.18.28-.71.88-.87 1.06-.16.18-.32.2-.6.07-.28-.14-1.18-.44-2.25-1.41-.83-.74-1.39-1.66-1.55-1.94-.16-.28-.02-.43.12-.57.12-.12.28-.32.41-.48.14-.16.18-.28.28-.46.09-.18.05-.34-.02-.48-.07-.14-.62-1.5-.85-2.05-.22-.53-.45-.46-.62-.46-.16 0-.34-.02-.53-.02-.18 0-.48.07-.73.34-.25.28-.96.94-.96 2.3s.98 2.66 1.12 2.84c.14.18 1.93 2.95 4.68 4.02.65.28 1.16.45 1.56.57.65.21 1.24.18 1.7.11.52-.08 1.62-.66 1.85-1.3.23-.64.23-1.19.16-1.3-.07-.11-.25-.18-.53-.32z"/></svg>
+    WhatsApp
+  </a>
+
   <script>
-    // Simple slider
-    const sliders = document.querySelectorAll('.slider');
-    sliders.forEach((el)=>{
-      const imgs = JSON.parse(el.getAttribute('data-images'));
-      const slides = imgs.map((src,i)=>{ 
-        const d=document.createElement('div'); d.className='slide'+(i===0?' active':''); 
-        const im=document.createElement('img'); im.src=src; im.alt='Photo chantier';
-        im.style.width='100%'; im.style.height='100%'; im.style.objectFit='cover';
-        d.appendChild(im); el.appendChild(d); return d;
-      });
-      const dotsWrap=document.createElement('div'); dotsWrap.className='dots';
-      const dots = imgs.map((_,i)=>{
-        const b=document.createElement('div'); b.className='dot'+(i===0?' active':'');
-        dotsWrap.appendChild(b); return b; });
-      el.appendChild(dotsWrap);
-      let idx=0, playing=true;
-      const show=(n)=>{slides[idx].classList.remove('active');dots[idx].classList.remove('active'); idx=(n+slides.length)%slides.length; slides[idx].classList.add('active'); dots[idx].classList.add('active');};
-      let timer=setInterval(()=>playing&&show(idx+1), 2700);
-      el.addEventListener('mouseenter',()=>playing=false);
-      el.addEventListener('mouseleave',()=>playing=true);
-    });
-    // Flash message after form
-    if(new URLSearchParams(location.search).get('sent')==='1'){alert('Merci ! Votre demande a été envoyée.')};
+    // -------- Carrousels auto (chargent toutes les images existantes chantierX-1..30) --------
+    function buildCarousel(el){
+      const prefix = el.dataset.prefix;         // ex: 'chantier1'
+      const max = 30;                            // essaie jusqu'à 30 images
+      const urls = [];
+      let i = 1;
+      let pending = 0, tried = 0;
+
+      function done(){
+        if(urls.length === 0){
+          el.innerHTML = '<div class="cap">Aucune image trouvée</div>';
+          return;
+        }
+        // créer les slides
+        urls.forEach((src, idx)=>{
+          const s = document.createElement('div');
+          s.className = 'slide' + (idx===0 ? ' active' : '');
+          const im = document.createElement('img');
+          im.src = src; im.alt = 'Photo ' + (idx+1);
+          s.appendChild(im);
+          el.appendChild(s);
+        });
+        // dots
+        const dotsWrap = document.createElement('div'); dotsWrap.className = 'dots';
+        urls.forEach((_, idx)=>{
+          const d = document.createElement('div'); d.className = 'dot' + (idx===0 ? ' active' : '');
+          d.addEventListener('click', ()=>{ go(idx, true); });
+          dotsWrap.appendChild(d);
+        });
+        el.appendChild(dotsWrap);
+
+        // animation
+        const slides = Array.from(el.querySelectorAll('.slide'));
+        const dots = Array.from(el.querySelectorAll('.dot'));
+        let k = 0, playing = true, t;
+
+        function render(){
+          slides.forEach((s, i)=> s.classList.toggle('active', i===k));
+          dots.forEach((d, i)=> d.classList.toggle('active', i===k));
+        }
+        function go(n, stop=false){ k = (n + slides.length) % slides.length; render(); if(stop){ playing=false; resetTimer(); } }
+        function tick(){ if(playing){ go(k+1); } }
+        function resetTimer(){ clearInterval(t); t = setInterval(tick, 3200); }
+        el.addEventListener('mouseenter', ()=>{ playing=false; });
+        el.addEventListener('mouseleave', ()=>{ playing=true; });
+        // Swipe
+        let x0=null; el.addEventListener('pointerdown', e=>x0=e.clientX);
+        el.addEventListener('pointerup', e=>{ if(x0==null) return; const dx=e.clientX-x0; if(Math.abs(dx)>40) go(k+(dx<0?1:-1), true); x0=null; });
+
+        resetTimer(); render();
+      }
+
+      function tryLoad(n){
+        const src = `assets/${prefix}-${n}.jpg`;
+        const im = new Image(); pending++; tried++;
+        im.onload = ()=>{ urls.push(src); pending--; next(); };
+        im.onerror = ()=>{ pending--; next(); };
+        im.src = src;
+      }
+      function next(){
+        if(tried >= max && pending === 0){ done(); return; }
+        if(tried < max){ tryLoad(tried+1); }
+      }
+      // start pipeline
+      for(let c=0;c<5;c++) next(); // quelques tentatives en parallèle pour aller vite
+    }
+
+    document.querySelectorAll('.slider').forEach(buildCarousel);
+
+    // Toast après FormSubmit (?sent=1)
+    if (new URLSearchParams(location.search).get('sent') === '1') {
+      const ok = document.createElement('div');
+      ok.textContent = 'Merci ! Votre demande a bien été envoyée.';
+      ok.style.cssText = 'position:fixed;left:50%;transform:translateX(-50%);bottom:18px;background:#16a34a;color:#fff;padding:12px 16px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,.15);z-index:1000';
+      document.body.appendChild(ok); setTimeout(()=>ok.remove(), 5000);
+      history.replaceState({}, '', location.pathname);
+    }
   </script>
 </body>
 </html>
