@@ -1,186 +1,360 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>JD J’RÉNOV — Électricité & Aménagement intérieur</title>
-  <link rel="icon" type="image/png" href="assets/logo-jd-jrenov.png" />
+
+  <meta name="description" content="JD J’RÉNOV : électricité générale, rénovations, placo & faux-plafonds, dépannages 7j/7. Devis sous 48h. Interventions propres et soignées." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="JD J’RÉNOV — Électricité & Aménagement intérieur" />
+  <meta property="og:description" content="Électricité générale, rénovations, placo & faux-plafonds, dépannages 7j/7. Devis sous 48h." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/logo-jd-jrenov.png" />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="assets/favicon-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="assets/favicon-16x16.png" sizes="16x16" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+
+  <!-- Police Google (Inter) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    body {
-      font-family: "Poppins", sans-serif;
-      background-color: #121212;
-      background-image: url("assets/noBgColor.png");
-      background-repeat: no-repeat;
-      background-position: center;
-      background-attachment: fixed;
-      background-size: 60%;
-      color: #eee;
-      margin: 0;
-      padding: 0;
+    :root{
+      --brand:#0f172a;       /* bleu nuit pour éléments actifs */
+      --text:#0f172a;        /* texte principal */
+      --muted:#64748b;       /* texte secondaire */
+      --accent:#2563eb;      /* bleu bouton */
+      --bg:#ffffff;          /* fond clair */
+      --card:#ffffff;        /* fond des cartes */
+      --ring:0 0 0 1px rgba(2,6,23,.08),0 0 #0000;
+      --shadow:0 10px 25px rgba(0,0,0,.08);
     }
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 40px;
-      background: rgba(0, 0, 0, 0.8);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue","Noto Sans",Arial,sans-serif}
+    a{color:var(--brand);text-decoration:none}
+    .container{max-width:1150px;margin:0 auto;padding:0 20px}
+    .muted{color:var(--muted)}
+    .btn{display:inline-block;padding:12px 18px;border-radius:999px;font-weight:700;background:var(--brand);color:#fff;border:2px solid transparent;transition:.2s box-shadow,.2s transform}
+    .btn:hover{box-shadow:var(--shadow);transform:translateY(-1px)}
+    .btn.outline{background:#fff;color:var(--brand);border-color:var(--brand)}
+    header{position:sticky;top:0;background:#fff;backdrop-filter:saturate(180%) blur(8px);box-shadow:0 1px 0 rgba(2,6,23,.08);z-index:50}
+    header .bar{display:flex;align-items:center;justify-content:space-between;height:70px}
+    .logo{display:flex;align-items:center;gap:10px}
+    .logo img{height:36px}
+    .nav{display:flex;gap:18px}
+    .hero{padding:56px 0}
+    .badge{display:inline-flex;align-items:center;gap:6px;background:rgba(15,23,42,.08);color:var(--brand);padding:6px 10px;border-radius:999px;font-size:12px;font-weight:600}
+    .hero-grid{display:grid;grid-template-columns:1.2fr .9fr;gap:22px;align-items:start}
+    h1{font-size:44px;line-height:1.05;margin:10px 0 16px 0}
+    .cta-row{display:flex;gap:12px;margin:18px 0 28px 0}
+    .card{background:var(--card);border-radius:16px;padding:18px 16px;box-shadow:var(--shadow)}
+    .list{display:grid;row-gap:8px}
+    .list li{display:flex;gap:10px;align-items:flex-start}
+    .list li b{color:var(--brand)}
+    .services{padding:32px 0}
+    .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+    .service-card{background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:18px}
+    .service-card h3{margin:8px 0 8px 0}
+    .reals{padding:40px 0}
+    .reals h2{margin:6px 0 14px 0}
+    .real-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+    .real{background:#fff;border-radius:18px;box-shadow:var(--shadow);overflow:hidden}
+    .real h3{padding:12px 16px;margin:0}
+    .slider{position:relative;width:100%;aspect-ratio:16/10;background:#000}
+    .slider img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s}
+    .slider img.active{opacity:1}
+    .slider .progress{position:absolute;left:8px;right:8px;bottom:8px;height:3px;background:rgba(255,255,255,.3);border-radius:999px;overflow:hidden}
+    .slider .bar{height:100%;width:0;background:#fff;transition:width .1s}
+    footer{padding:36px 0;border-top:1px solid rgba(2,6,23,.08);background:#fff}
+    .foot{display:flex;gap:18px;align-items:center;justify-content:space-between}
+    .foot small{color:var(--muted)}
 
-    header img {
-      height: 60px;
-      cursor: pointer;
-    }
+    /* Bouton WhatsApp flottant */
+    .wa-float{position:fixed;right:18px;bottom:18px;display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;padding:12px 16px;border-radius:999px;box-shadow:0 10px 25px rgba(0,0,0,.18);z-index:999;font-weight:800}
+    .wa-float svg{width:20px;height:20px}
 
-    nav a {
-      color: #f5c76e;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: 500;
+    @media (max-width:980px){
+      .hero-grid{grid-template-columns:1fr}
+      .grid{grid-template-columns:repeat(2,1fr)}
+      .real-grid{grid-template-columns:1fr}
     }
-
-    nav a:hover {
-      color: #fff;
-    }
-
-    .hero {
-      padding: 60px 20px;
-      text-align: left;
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    .hero h1 {
-      font-size: 2.2em;
-      color: #f5c76e;
-    }
-
-    .hero p {
-      font-size: 1.1em;
-      color: #ccc;
-      max-width: 700px;
-    }
-
-    .btn {
-      display: inline-block;
-      background: #f5c76e;
-      color: #000;
-      padding: 10px 20px;
-      margin-top: 20px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .services, .realisations, .contact {
-      padding: 40px 20px;
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    .section-title {
-      font-size: 1.8em;
-      color: #f5c76e;
-      margin-bottom: 20px;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 215, 0, 0.2);
-      border-radius: 10px;
-      padding: 20px;
-    }
-
-    .card img {
-      width: 100%;
-      border-radius: 8px;
-    }
-
-    footer {
-      background: #000;
-      color: #ccc;
-      text-align: center;
-      padding: 20px;
-      margin-top: 50px;
-      border-top: 1px solid rgba(255, 215, 0, 0.2);
+    @media (max-width:640px){
+      .grid{grid-template-columns:1fr}
     }
   </style>
+
+  <!-- Google Analytics (remplace G-XXXXXXXXXX si besoin) -->
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
-    // Permet de revenir à la page d’accueil en cliquant sur le logo
-    function goHome() {
-      window.location.href = "./index.html";
-    }
+    window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date()); gtag('config','G-XXXXXXXXXX');
   </script>
+  -->
 </head>
 <body>
+
+  <!-- WhatsApp flottant -->
+  <a class="wa-float" href="https://wa.me/33652666837?text=Bonjour%20JD%20J%27R%C3%89NOV%2C%20je%20souhaite%20un%20devis%20svp." target="_blank" rel="noopener">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor"><path d="M380.9 97.1C339-1.5 231.2-33.5 141 14.1S-1.5 216.8 46.1 307l-30.7 89.2c-5.4 15.8 10.1 31.3 25.9 25.9l89.2-30.7C221.2 480.5 329 448.5 380.9 350c51.9-98.6 19.9-206.4-70-252.9zM224 400c-30.1 0-59.4-8.3-84.7-23.9l-6-3.6-63.8 22 22-63.8-3.6-6C72.3 299.4 64 270.1 64 240 64 146.1 138.1 72 232 72s168 74.1 168 168-74.1 160-176 160zm101.3-115.9l-28.2-8.1c-6.5-1.9-13.5.2-18.3 5.1l-12.7 13c-27.3-14.5-49.5-36.7-64-64l12.9-12.9c4.9-4.9 6.9-12 5-18.5l-8-28c-2.4-8.3-10-14-18.6-14h-12.2c-10.4 0-19 8.6-19 19 0 89.1 72.3 161.4 161.4 161.4 10.4 0 19-8.6 19-19v-12.2c0-8.7-5.8-16.3-14.3-18.9z"/></svg>
+    WhatsApp
+  </a>
+
+  <!-- En-tête -->
   <header>
-    <img src="assets/logo-jd-jrenov.png" alt="JD J'RÉNOV" onclick="goHome()" />
-    <nav>
-      <a href="#services">Services</a>
-      <a href="#realisations">Réalisations</a>
-      <a href="#contact">Contact</a>
-      <a href="#devis" class="btn">Devis gratuit</a>
-    </nav>
+    <div class="container bar">
+      <a href="/" class="logo" title="Accueil JD J’RÉNOV">
+        <img src="assets/logo-jd-jrenov.png" alt="JD J’RÉNOV" />
+        <div>
+          <div style="font-weight:800;letter-spacing:.3px">JD J’RÉNOV</div>
+          <div class="muted" style="font-size:12px">Électricité & Aménagement intérieur</div>
+        </div>
+      </a>
+
+      <nav class="nav">
+        <a href="#services">Services</a>
+        <a href="#realisations">Réalisations</a>
+        <a href="#contact">Contact</a>
+        <a class="btn" href="https://wa.me/33652666837?text=Bonjour%20JD%20J%27R%C3%89NOV%2C%20je%20souhaite%20un%20devis%20svp." target="_blank" rel="noopener">Devis gratuit</a>
+      </nav>
+    </div>
   </header>
 
+  <!-- Hero -->
   <section class="hero">
-    <h1>Électricité & rénovation intérieure</h1>
-    <p>Travaux soignés, délais respectés. Spécialiste en électricité générale, aménagement intérieur et finitions haut de gamme.</p>
-    <a href="#devis" class="btn">Demander un devis</a>
-  </section>
+    <div class="container hero-grid">
+      <div>
+        <span class="badge">⚡ Dépannage 7j/7 • Devis sous 48h</span>
+        <h1>Électricité & rénovation intérieure —<br/>travaux soignés, délais respectés</h1>
+        <p class="muted" style="max-width:680px">
+          Tableaux électriques, mises en conformité, éclairage, prises & réseaux.
+          Cloisons, doublages, faux-plafonds et finitions impeccables.
+        </p>
+        <div class="cta-row">
+          <a class="btn" href="https://wa.me/33652666837?text=Bonjour%20JD%20J%27R%C3%89NOV%2C%20je%20souhaite%20un%20devis%20svp." target="_blank" rel="noopener">Demander un devis</a>
+          <a class="btn outline" href="#services">Voir nos services</a>
+        </div>
 
-  <section id="services" class="services">
-    <h2 class="section-title">Nos services</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>Électricité générale</h3>
-        <p>Installation, rénovation, circuits, éclairage, VMC, chauffage électrique...</p>
+        <div class="card">
+          <h3 style="margin:0 0 8px 0;">Interventions courantes</h3>
+          <ul class="list">
+            <li><b>Électricité générale</b> — création & rénovation de circuits, tableaux, différentiels, prises & éclairage.</li>
+            <li><b>Dépannage</b> — recherche de panne, remise en service, sécurité.</li>
+            <li><b>Placo</b> — cloisons, doublages, <i>faux-plafonds</i>, corniches lumineuses.</li>
+            <li><b>Rénovation</b> — cuisine, salle de bain, pièces à vivre, finitions.</li>
+          </ul>
+        </div>
       </div>
+
       <div class="card">
-        <h3>Dépannage et mise en sécurité</h3>
-        <p>Recherche de panne, réparation, mise aux normes électriques...</p>
-      </div>
-      <div class="card">
-        <h3>Placo & aménagement</h3>
-        <p>Cloisons, isolation, faux plafonds, finitions, aménagement complet.</p>
+        <h3 style="margin:0 0 8px 0;">Assuré & garanti • Intervention locale • Respect des normes NF C 15-100</h3>
+        <ul class="list" style="margin-top:8px">
+          <li>Diagnostic rapide, dépannage propre (protections, aspirateur, finitions soignées).</li>
+          <li>Conseil éclairage (spots LED, bandes LED, variateurs, scénarios).</li>
+          <li>Petits travaux : ajout de prises, interrupteurs, VMC, réseau RJ45.</li>
+          <li>Pose d’appareillages fiables : Schneider, Legrand, Hager…</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <section id="realisations" class="realisations">
-    <h2 class="section-title">Réalisation</h2>
-    <div class="cards">
-      <div class="card">
-        <h3>Chantier 1 — Salon et charpente apparentes</h3>
-        <img src="assets/chantier1-1.jpg" alt="chantier 1" />
+  <!-- Services -->
+  <section id="services" class="services">
+    <div class="container">
+      <h2>Nos services</h2>
+      <div class="grid">
+        <div class="service-card">
+          <h3>Électricité générale</h3>
+          <p class="muted">Tableaux, circuits, VMC, prises, éclairage intérieur/extérieur, domotique de base. Mise aux normes NF C 15-100.</p>
+        </div>
+        <div class="service-card">
+          <h3>Dépannage & mise en sécurité</h3>
+          <p class="muted">Diagnostic, recherche de panne, protections différentielles, remise en sécurité. Interventions propres et soignées.</p>
+        </div>
+        <div class="service-card">
+          <h3>Placo & aménagement</h3>
+          <p class="muted">Cloisons, isolation, doublages, <i>faux-plafonds</i>, trappes techniques, habillages pour spots LED.</p>
+        </div>
+        <div class="service-card">
+          <h3>Rénovations complètes</h3>
+          <p class="muted">Cuisine & salle de bain (niches, éclairages), intégration d’électroménager, finitions soignées.</p>
+        </div>
       </div>
-      <div class="card">
-        <h3>Chantier 2 — Salon de barbier (Le Barbier Rennais)</h3>
-        <img src="assets/chantier2-1.jpg" alt="chantier 2" />
+    </div>
+  </section>
+
+  <!-- Réalisations -->
+  <section id="realisations" class="reals">
+    <div class="container">
+      <h2>Réalisations</h2>
+      <p class="muted" style="margin-bottom:14px">Diaporamas automatiques — passez la souris / touchez pour mettre en pause, cliquez pour ouvrir en grand.</p>
+
+      <div class="real-grid">
+
+        <!-- CHANTIER 1 -->
+        <article class="real">
+          <h3>Chantier 1 — Salon et charpente apparentes</h3>
+          <div class="slider" data-delay="3800" data-group="c1">
+            <img src="assets/chantier1-1.jpg" alt="" class="active" />
+            <img src="assets/chantier1-2.jpg" alt="" />
+            <img src="assets/chantier1-3.jpg" alt="" />
+            <img src="assets/chantier1-4.jpg" alt="" />
+            <div class="progress"><div class="bar"></div></div>
+          </div>
+        </article>
+
+        <!-- CHANTIER 2 -->
+        <article class="real">
+          <h3>Chantier 2 — Aménagement d’un salon de barbier (Le Barbier Rennais)</h3>
+          <div class="slider" data-delay="3800" data-group="c2">
+            <img src="assets/chantier2-1.jpg" alt="" class="active" />
+            <img src="assets/chantier2-2.jpg" alt="" />
+            <img src="assets/chantier2-3.jpg" alt="" />
+            <img src="assets/chantier2-4.jpg" alt="" />
+            <div class="progress"><div class="bar"></div></div>
+          </div>
+        </article>
+
+        <!-- CHANTIER 3 -->
+        <article class="real">
+          <h3>Chantier 3 — Rénovation complète, électricité & aménagement</h3>
+          <div class="slider" data-delay="3800" data-group="c3">
+            <img src="assets/chantier3-1.jpg" alt="" class="active" />
+            <img src="assets/chantier3-2.jpg" alt="" />
+            <img src="assets/chantier3-3.jpg" alt="" />
+            <img src="assets/chantier3-4.jpg" alt="" />
+            <div class="progress"><div class="bar"></div></div>
+          </div>
+        </article>
+
+        <!-- CHANTIER 4 -->
+        <article class="real">
+          <h3>Chantier 4 — Salle de bain & niches, pierre naturelle</h3>
+          <div class="slider" data-delay="3800" data-group="c4">
+            <img src="assets/chantier4-1.jpg" alt="" class="active" />
+            <img src="assets/chantier4-2.jpg" alt="" />
+            <img src="assets/chantier4-3.jpg" alt="" />
+            <img src="assets/chantier4-4.jpg" alt="" />
+            <div class="progress"><div class="bar"></div></div>
+          </div>
+        </article>
+
       </div>
-      <div class="card">
-        <h3>Chantier 3 — Rénovation complète</h3>
-        <img src="assets/chantier3-1.jpg" alt="chantier 3" />
-      </div>
-      <div class="card">
-        <h3>Chantier 4 — Salle de bain & pierre naturelle</h3>
-        <img src="assets/chantier4-1.jpg" alt="chantier 4" />
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" style="padding:40px 0">
+    <div class="container">
+      <div class="card" style="display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap">
+        <div>
+          <h3 style="margin:0 0 6px 0">Un projet, une urgence ?</h3>
+          <p class="muted" style="margin:0">Expliquez-moi votre besoin, j’envoie un devis sous 48h max (souvent plus vite).</p>
+        </div>
+        <div style="display:flex;gap:12px">
+          <a class="btn" href="https://wa.me/33652666837?text=Bonjour%20JD%20J%27R%C3%89NOV%2C%20je%20souhaite%20un%20devis%20svp." target="_blank" rel="noopener">Devis gratuit sur WhatsApp</a>
+          <a class="btn outline" href="https://wa.me/33652666837" target="_blank" rel="noopener">Envoyer un message</a>
+        </div>
       </div>
     </div>
   </section>
 
   <footer>
-    <p>© 2025 JD J’RÉNOV — Électricité & Aménagement intérieur<br>
-    Saint-Malo, Dinard, Rennes, et alentours.</p>
+    <div class="container foot">
+      <div class="logo" style="gap:8px">
+        <img src="assets/logo-jd-jrenov.png" alt="JD J’RÉNOV" />
+        <div>
+          <div style="font-weight:800">JD J’RÉNOV</div>
+          <small class="muted">Électricité & Aménagement intérieur</small>
+        </div>
+      </div>
+      <small class="muted">© <span id="y"></span> — Tous droits réservés • <a href="#contact">Contact</a></small>
+    </div>
   </footer>
+
+  <!-- Lightbox + sliders -->
+  <script>
+    // Année footer
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Carrousels auto
+    document.querySelectorAll('.slider').forEach(slider=>{
+      const imgs = [...slider.querySelectorAll('img')];
+      const bar  = slider.querySelector('.bar');
+      const delay = Number(slider.dataset.delay||3800);
+      let i=0, p=0, playing=true, raf;
+
+      function step(ts){
+        if(!playing){raf=requestAnimationFrame(step);return;}
+        p+=16; // ~60fps
+        bar.style.width = Math.min(100, (p/delay)*100) + '%';
+        if(p>=delay){
+          p=0; bar.style.width='0%';
+          imgs[i].classList.remove('active');
+          i=(i+1)%imgs.length;
+          imgs[i].classList.add('active');
+        }
+        raf=requestAnimationFrame(step);
+      }
+      imgs[0].classList.add('active');
+      raf=requestAnimationFrame(step);
+
+      slider.addEventListener('mouseenter',()=>playing=false);
+      slider.addEventListener('mouseleave',()=>playing=true);
+
+      // Lightbox clic => ouvre groupe
+      slider.addEventListener('click',()=>{
+        const group = slider.dataset.group;
+        openLightbox(group, i);
+      });
+    });
+
+    // Lightbox simple
+    const lb = document.createElement('div');
+    lb.style.cssText='position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:2000';
+    lb.innerHTML = `
+      <div id="lbWrap" style="position:relative;max-width:96vw;max-height:90vh">
+        <img id="lbImg" src="" style="max-width:96vw;max-height:90vh;object-fit:contain;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,.4)"/>
+        <button id="lbPrev" aria-label="Précédent" style="position:absolute;left:-56px;top:50%;transform:translateY(-50%);font-size:28px;color:#fff;background:transparent;border:0;cursor:pointer">‹</button>
+        <button id="lbNext" aria-label="Suivant" style="position:absolute;right:-56px;top:50%;transform:translateY(-50%);font-size:28px;color:#fff;background:transparent;border:0;cursor:pointer">›</button>
+        <button id="lbClose" aria-label="Fermer" style="position:absolute;right:-12px;top:-12px;width:34px;height:34px;border-radius:999px;background:#fff;border:0;cursor:pointer">✕</button>
+      </div>`;
+    document.body.appendChild(lb);
+
+    const groups = {};
+    document.querySelectorAll('.slider').forEach(sl=>{
+      const g=sl.dataset.group;
+      groups[g]=[...sl.querySelectorAll('img')].map(img=>img.src);
+    });
+
+    let gKey=null, idx=0;
+    const lbImg = lb.querySelector('#lbImg');
+
+    function openLightbox(group, startIndex){
+      gKey=group; idx=startIndex||0;
+      lbImg.src = groups[gKey][idx];
+      lb.style.display='flex';
+      document.body.style.overflow='hidden';
+    }
+    function closeLightbox(){
+      lb.style.display='none';
+      document.body.style.overflow='';
+    }
+    lb.addEventListener('click',e=>{ if(e.target===lb) closeLightbox(); });
+    lb.querySelector('#lbClose').onclick = closeLightbox;
+    lb.querySelector('#lbPrev').onclick  = ()=>{ idx=(idx-1+groups[gKey].length)%groups[gKey].length; lbImg.src=groups[gKey][idx];};
+    lb.querySelector('#lbNext').onclick  = ()=>{ idx=(idx+1)%groups[gKey].length; lbImg.src=groups[gKey][idx];};
+    window.addEventListener('keydown',e=>{
+      if(lb.style.display!=='flex') return;
+      if(e.key==='Escape') closeLightbox();
+      if(e.key==='ArrowRight') lb.querySelector('#lbNext').onclick();
+      if(e.key==='ArrowLeft')  lb.querySelector('#lbPrev').onclick();
+    });
+  </script>
 </body>
 </html>
