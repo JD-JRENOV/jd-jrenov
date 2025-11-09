@@ -249,84 +249,143 @@
   // Année footer
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // ====== Définition des galeries (noms de fichiers dans /assets) ======
-  const galleries = {
-    1: ["chantier1-1.jpg","chantier1-2.jpg","chantier1-3.jpg","chantier1-4.jpg","chantier1-5.jpg","chantier1-6.jpg","chantier1-7.jpg"],
-    2: ["chantier2-1.jpg","chantier2-2.jpg","chantier2-3.jpg","chantier2-4.jpg"],
-    3: ["chantier3-1.jpg","chantier3-2.jpg","chantier3-3.jpg","chantier3-4.jpg","chantier3-5.jpg","chantier3-6.jpg","chantier3-7.jpg","chantier3-8.jpg","chantier3-9.jpg"],
-    4: ["chantier4-1.jpg","chantier4-2.jpg","chantier4-3.jpg","chantier4-4.jpg"]
-  };
+  <script>
+  // Année footer
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-  // ====== Construction des carrousels ======
+  // ===== Config des galeries (base + nombre attendu) =====
+  // On va tenter .jpg puis .jpeg pour chaque numéro, et on n'ajoute que si ça charge.
+  const galleryDefs = [
+    { id: 1, base: 'chantier1-', count: 7, title: 'Chantier 1 — Salon et charpente apparentes' },
+    { id: 2, base: 'chantier2-', count: 4, title: 'Chantier 2 — Aménagement d’un salon de barbier (Le Barbier Rennais)' },
+    { id: 3, base: 'chantier3-', count: 10, title: 'Chantier 3 — Rénovation complète, électricité & aménagement' },
+    { id: 4, base: 'chantier4-', count: 4, title: 'Chantier 4 — Salle de bain & niches, pierre naturelle' },
+  ];
+
+  // ===== Génère les carrousels en testant .jpg puis .jpeg =====
   const carousels = document.querySelectorAll('.carousel');
-  const intervals = new Map(); // pour pause/reprise
+  const intervals = new Map();
+  const galleries = {}; // {id: ['fichier1','fichier2', ...]}
 
-  carousels.forEach(carousel=>{
-    const id = carousel.dataset.gallery;
-    const files = galleries[id] || [];
-    const dotsHolder = document.createElement('div');
-    dotsHolder.className="thumb-mask";
-    carousel.appendChild(dotsHolder);
-
-    files.forEach((f,idx)=>{
-      const img = document.createElement('img');
-      img.src = "assets/"+f;
-      img.alt = "Chantier "+id+" — photo "+(idx+1);
-      if(idx===0) img.classList.add('active');
-      img.addEventListener('click',()=>openLightbox(id, idx));
-      carousel.appendChild(img);
-
-      const d=document.createElement('div'); d.className="dot"+(idx===0?" on":"");
-      dotsHolder.appendChild(d);
+  function tryLoad(src) {
+    return new Promise(resolve => {
+      const img = new Image();
+      img.onload = () => resolve(true);
+      img.onerror = () => resolve(false);
+      img.src = src;
     });
+  }
 
-    // Lecture auto
-    let i=0;
-    const imgs = Array.from(carousel.querySelectorAll('img'));
-    const dots = Array.from(dotsHolder.querySelectorAll('.dot'));
-    function show(n){
-      imgs.forEach((im,k)=>im.classList.toggle('active', k===n));
-      dots.forEach((dot,k)=>dot.classList.toggle('on', k===n));
-    }
-    const tick=()=>{ i=(i+1)%imgs.length; show(i); };
-    if(imgs.length>1){
-      const it=setInterval(tick, 2500);
-      intervals.set(carousel, it);
-      carousel.addEventListener('mouseenter',()=>clearInterval(intervals.get(carousel)));
-      carousel.addEventListener('mouseleave',()=>intervals.set(carousel,setInterval(tick,2500)));
-    }
-  });
+  async function pickExistingFile(base, index) {
+    const jpg = `assets/${base}${index}.jpg`;
+    const jpeg = `assets/${base}${index}.jpeg`;
+    if (await tryLoad(jpg)) return jpg;
+    if (await tryLoad(jpeg)) return jpeg;
+    return null;
+  }
 
-  // ====== Lightbox ======
+  async function buildCarousels() {
+    for (const c of carousels) {
+      const gid = +c.dataset.gallery;
+      const def = galleryDefs.find(d => d.id === gid);
+      if (!def) continue;
+
+      const files = [];
+      for (let i = 1; i <= def.count; i++) {
+        const found = await pickExistingFile(def.base, i);
+        if (found) files.push(found);
+      }
+      galleries[gid] = files;
+
+      // Crée les <img> qui existent réellement
+      const dotsHolder = document.createElement('div');
+      dotsHolder.className = 'thumb-mask';
+      c.appendChild(dotsHolder);
+
+      files.forEach((src, idx) => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = `${def.title} — photo ${idx + 1}`;
+        if (idx === 0) img.classList.add('active');
+        img.addEventListener('click', () => openLightbox(gid, idx));
+        c.appendChild(img);
+
+        const dot = document.createElement('div');
+        dot.className = 'dot' + (idx === 0 ? ' on' : '');
+        dotsHolder.appendChild(dot);
+      });
+
+      // Lancement auto + pause sur survol/touch
+      const imgs = Array.from(c.querySelectorAll('img'));
+      const dots = Array.from(dotsHolder.querySelectorAll('.dot'));
+      if (imgs.length > 1) {
+        let i = 0;
+        const show = n => {
+          imgs.forEach((im, k) => im.classList.toggle('active', k === n));
+          dots.forEach((d, k) => d.classList.toggle('on', k === n));
+        };
+        const tick = () => { i = (i + 1) % imgs.length; show(i); };
+        const it = setInterval(tick, 2500);
+        intervals.set(c, it);
+        c.addEventListener('mouseenter', () => clearInterval(intervals.get(c)));
+        c.addEventListener('mouseleave', () => intervals.set(c, setInterval(tick, 2500)));
+        c.addEventListener('touchstart', () => clearInterval(intervals.get(c)), { passive: true });
+        c.addEventListener('touchend',   () => intervals.set(c, setInterval(tick, 2500)));
+      }
+    }
+  }
+
+  // ===== Lightbox =====
   const lb = document.getElementById('lightbox');
   const lbImg = document.getElementById('lbImg');
   let currentGallery = 1, currentIndex = 0;
 
-  function openLightbox(gid, idx){
-    currentGallery=+gid; currentIndex=idx;
+  function openLightbox(gid, idx) {
+    currentGallery = +gid; currentIndex = idx;
     updateLB();
     lb.classList.add('open');
   }
-  function updateLB(){
+  function updateLB() {
     const files = galleries[currentGallery] || [];
-    const file = files[currentIndex];
-    lbImg.src = "assets/"+file;
-    lbImg.alt = "Photo "+(currentIndex+1)+" / "+files.length;
+    if (!files.length) return;
+    lbImg.src = files[currentIndex];
+    lbImg.alt = `Photo ${currentIndex + 1} / ${files.length}`;
   }
-  document.getElementById('lbClose').onclick=()=>lb.classList.remove('open');
-  document.getElementById('prev').onclick=()=>{ 
-    const files=galleries[currentGallery]; currentIndex=(currentIndex-1+files.length)%files.length; updateLB();
+  document.getElementById('lbClose').onclick = () => lb.classList.remove('open');
+  document.getElementById('prev').onclick = () => {
+    const files = galleries[currentGallery] || [];
+    if (!files.length) return;
+    currentIndex = (currentIndex - 1 + files.length) % files.length;
+    updateLB();
   };
-  document.getElementById('next').onclick=()=>{ 
-    const files=galleries[currentGallery]; currentIndex=(currentIndex+1)%files.length; updateLB();
+  document.getElementById('next').onclick = () => {
+    const files = galleries[currentGallery] || [];
+    if (!files.length) return;
+    currentIndex = (currentIndex + 1) % files.length;
+    updateLB();
   };
-  lb.addEventListener('click',e=>{ if(e.target===lb) lb.classList.remove('open'); });
-  document.addEventListener('keydown',e=>{
-    if(!lb.classList.contains('open')) return;
-    if(e.key==='Escape') lb.classList.remove('open');
-    if(e.key==='ArrowLeft') document.getElementById('prev').click();
-    if(e.key==='ArrowRight') document.getElementById('next').click();
+  lb.addEventListener('click', e => { if (e.target === lb) lb.classList.remove('open'); });
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape') lb.classList.remove('open');
+    if (e.key === 'ArrowLeft') document.getElementById('prev').click();
+    if (e.key === 'ArrowRight') document.getElementById('next').click();
   });
+
+  // ===== Fond logo s'arrête avant Réalisations
+  (function(){
+    function setBgHeight(){
+      const sec = document.getElementById('realisations');
+      const bg = document.body; // on utilise le pseudo-élément body::before
+      // rien à faire ici car on a couvert la section via un calque sombre,
+      // mais on force un reflow pour safari iOS au redimensionnement
+      void bg.offsetHeight;
+    }
+    setBgHeight();
+    window.addEventListener('resize', setBgHeight);
+  })();
+
+  // Lancement
+  buildCarousels();
 </script>
-</body>
-</html>
+
