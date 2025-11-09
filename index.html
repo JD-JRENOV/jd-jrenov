@@ -56,7 +56,7 @@
   .ul{margin:0; padding-left:18px}
   .cta-row{display:flex; gap:12px; flex-wrap:wrap; margin-top:12px}
 
-  /* Realisations bloc : on neutralise le fond derrière pour lisibilité */
+  /* Réalisations (fond neutre pour lisibilité) */
   .realisations{position:relative}
   .realisations::before{
     content:""; position:absolute; inset:0; background:var(--bg);
@@ -64,7 +64,7 @@
   }
   .realisations > .wrap{position:relative; z-index:1}
 
-  /* Grille des chantiers (vignettes avec carrousel) */
+  /* Grille des chantiers */
   .grid{display:grid; gap:18px}
   @media (min-width:900px){ .grid{grid-template-columns:1fr 1fr} }
   .card{
@@ -80,7 +80,7 @@
   .dot{width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.35)}
   .dot.on{background:#fff}
 
-  /* Lightbox plein écran */
+  /* Lightbox */
   .lightbox{position:fixed; inset:0; display:none; align-items:center; justify-content:center;
     background:rgba(0,0,0,.85); z-index:1000}
   .lightbox.open{display:flex}
@@ -89,16 +89,12 @@
   .lb-btn{background:rgba(255,255,255,.1); border:1px solid var(--ring); color:#fff; padding:10px 14px; border-radius:10px; cursor:pointer}
   .lb-close{position:absolute; top:18px; right:18px; background:rgba(255,255,255,.1); border:1px solid var(--ring); padding:8px 10px; border-radius:10px}
 
-  /* Contact */
-  .contact-card{display:flex; gap:14px; align-items:flex-start}
-  .contact-card .panel{flex:1}
-
   /* Footer */
   footer{border-top:1px solid var(--ring); padding:18px 0; color:var(--mut); position:relative}
   footer a{color:#eaeaea}
   .legal{display:flex; gap:14px; flex-wrap:wrap}
 
-  /* Whatsapp flottant */
+  /* Whatsapp */
   .wa-float{
     position:fixed; right:18px; bottom:18px; display:inline-flex; align-items:center; gap:10px;
     background:#25D366; color:#fff; padding:12px 16px; border-radius:999px; box-shadow:0 10px 25px rgba(0,0,0,.25);
@@ -172,29 +168,10 @@
       <p class="muted" style="color:var(--mut)">Diaporamas automatiques — passez la souris / touchez pour mettre en pause. Cliquez pour ouvrir en grand.</p>
 
       <div class="grid">
-        <!-- Chantier 1 -->
-        <article class="card">
-          <h3>Chantier 1 — Salon et charpente apparentes</h3>
-          <div class="carousel" data-gallery="1"></div>
-        </article>
-
-        <!-- Chantier 2 -->
-        <article class="card">
-          <h3>Chantier 2 — Aménagement d’un salon de barbier (Le Barbier Rennais)</h3>
-          <div class="carousel" data-gallery="2"></div>
-        </article>
-
-        <!-- Chantier 3 -->
-        <article class="card">
-          <h3>Chantier 3 — Rénovation complète, électricité & aménagement</h3>
-          <div class="carousel" data-gallery="3"></div>
-        </article>
-
-        <!-- Chantier 4 -->
-        <article class="card">
-          <h3>Chantier 4 — Salle de bain & niches, pierre naturelle</h3>
-          <div class="carousel" data-gallery="4"></div>
-        </article>
+        <article class="card"><h3>Chantier 1 — Salon et charpente apparentes</h3><div class="carousel" data-gallery="1"></div></article>
+        <article class="card"><h3>Chantier 2 — Aménagement d’un salon de barbier (Le Barbier Rennais)</h3><div class="carousel" data-gallery="2"></div></article>
+        <article class="card"><h3>Chantier 3 — Rénovation complète, électricité & aménagement</h3><div class="carousel" data-gallery="3"></div></article>
+        <article class="card"><h3>Chantier 4 — Salle de bain & niches, pierre naturelle</h3><div class="carousel" data-gallery="4"></div></article>
       </div>
     </div>
   </section>
@@ -203,13 +180,11 @@
   <section id="contact">
     <div class="wrap">
       <h2>Contact</h2>
-      <div class="contact-card">
-        <div class="panel">
-          <p><strong>JD J’RÉNOV</strong> — Électricité & Aménagement intérieur</p>
-          <p>📞 <a href="tel:+33652666837">06 52 66 68 37</a> · 💬 <a href="https://wa.me/33652666837" target="_blank" rel="noopener">WhatsApp</a><br>
-             ✉️ <a href="mailto:contact@jd-jrenov.fr">contact@jd-jrenov.fr</a></p>
-          <p class="muted" style="color:var(--mut)">Devis sous 48h — interventions propres et soignées.</p>
-        </div>
+      <div class="panel">
+        <p><strong>JD J’RÉNOV</strong> — Électricité & Aménagement intérieur</p>
+        <p>📞 <a href="tel:+33652666837">06 52 66 68 37</a> · 💬 <a href="https://wa.me/33652666837" target="_blank" rel="noopener">WhatsApp</a><br>
+           ✉️ <a href="mailto:contact.jdjrenov@gmail.com">contact.jdjrenov@gmail.com</a></p>
+        <p class="muted" style="color:var(--mut)">Devis sous 48h — interventions propres et soignées.</p>
       </div>
     </div>
   </section>
@@ -229,9 +204,9 @@
     </div>
   </footer>
 
-  <!-- Bouton WhatsApp flottant -->
-  <a class="wa-float" href="https://wa.me/33652666837" target="_blank" rel="noopener" aria-label="Contact WhatsApp">
-    <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16.04 3C9.4 3 4 8.4 4 15.06c0 2.52.84 4.86 2.25 6.75L5 29l7.37-1.94c1.8 1.02 3.87 1.6 6.07 1.6 6.66 0 12.06-5.4 12.06-12.06C30.5 8.4 25.1 3 18.44 3h-2.4zM16.44 26c-1.9 0-3.68-.5-5.2-1.37l-.37-.2-4.37 1.16 1.18-4.26-.24-.4A9.5 9.5 0 1 1 16.44 26zm5.1-6.9c-.28-.14-1.65-.8-1.9-.9-.26-.1-.45-.14-.65.14-.2.28-.75.9-.92 1.1-.17.2-.34.22-.62.08-.28-.14-1.18-.43-2.25-1.37-.83-.74-1.4-1.65-1.57-1.93-.17-.28-.02-.43.12-.57.12-.12.28-.31.42-.46.14-.15.17-.25.26-.42.08-.17.04-.32-.02-.46-.06-.14-.65-1.56-.9-2.15-.24-.58-.48-.5-.66-.5-.17 0-.37-.02-.57-.02-.2 0-.52.07-.8.36-.28.28-1.06 1.02-1.06 2.48 0 1.46 1.08 2.88 1.24 3.08.15.2 2.12 3.23 5.15 4.53.72.31 1.28.49 1.72.63.72.23 1.37.2 1.88.12.57-.08 1.65-.68 1.89-1.34.23-.66.23-1.22.16-1.34-.06-.12-.22-.18-.5-.32z"/></svg>
+  <!-- WhatsApp -->
+  <a class="wa-float" href="https://wa.me/33652666837?text=Bonjour%20JD%20J'RENOV%2C%20je%20souhaite%20un%20devis%20svp." target="_blank" rel="noopener">
+    <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16.04 3C9.4 3 4 8.4 4 15.06c0 2.52.84 4.86 2.25 6.75L5 29l7.37-1.94c1.8 1.02 3.87 1.6 6.07 1.6 6.66 0 12.06-5.4 12.06-12.06C30.5 8.4 25.1 3 18.44 3h-2.4zM16.44 26c-1.9 0-3.68-.5-5.2-1.37l-.37-.2-4.37 1.16 1.18-4.26-.24-.4A9.5 9.5 0 1 1 16.44 26zm5.1-6.9c-.28-.14-1.65-.8-1.9-.9-.26-.1-.45-.14-.65.14-.2.28-.75.9-.92 1.1-.17.2-.34.22-.62.08-.28-.14-1.18-.43-2.25-1.37-.83-.74-1.4-1.65-1.57-1.93-.17-.28-.02-.43.12-.57.12-.12.28-.31.42-.46.14-.15.17-.25.26-.42.08-.17.04-.32-.02-.46-.06-.14-.65-1.56-.9-2.15-.24-.58-.48-.5-.66-.5-.17 0-.37-.02-.57-.02-.2 0-.52.07-.8.36-.28.28-1.06 1.02-1.06 2.48 0 1.46 1.08 2.88 1.24 3.08.15.2 2.12 3.23 5.15 4.53.72.31 1.28.49 1.72.63.72.23 1.37.2 1.88.12.57-.08 1.65-.68 1.89-1.34.23-.66.23-1.22.16-1.34-.06-.12-.22-.18-.5-.32z"/></svg>
     WhatsApp
   </a>
 
@@ -249,21 +224,15 @@
   // Année footer
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // ====== Définition des galeries (noms de fichiers dans /assets) ======
-<script>
-  // Année footer
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  // ====== Définition des galeries (noms de fichiers dans /assets) ======
+  // Galeries : 7 / 4 / 10 / 6 images
   const galleries = {
     1: ["chantier1-1.jpg","chantier1-2.jpg","chantier1-3.jpg","chantier1-4.jpg","chantier1-5.jpg","chantier1-6.jpg","chantier1-7.jpg"],
     2: ["chantier2-1.jpg","chantier2-2.jpg","chantier2-3.jpg","chantier2-4.jpg"],
     3: ["chantier3-1.jpg","chantier3-2.jpg","chantier3-3.jpg","chantier3-4.jpg","chantier3-5.jpg","chantier3-6.jpg","chantier3-7.jpg","chantier3-8.jpg","chantier3-9.jpg","chantier3-10.jpg"],
     4: ["chantier4-1.jpg","chantier4-2.jpg","chantier4-3.jpg","chantier4-4.jpg","chantier4-5.jpg","chantier4-6.jpg"]
   };
-  /* ... le reste du script inchangé ... */
-</script>
-  // ====== Construction des carrousels ======
+
+  // Construction des carrousels
   const carousels = document.querySelectorAll('.carousel');
   const intervals = new Map(); // pour pause/reprise
 
@@ -300,10 +269,12 @@
       intervals.set(carousel, it);
       carousel.addEventListener('mouseenter',()=>clearInterval(intervals.get(carousel)));
       carousel.addEventListener('mouseleave',()=>intervals.set(carousel,setInterval(tick,2500)));
+      carousel.addEventListener('touchstart',()=>clearInterval(intervals.get(carousel)),{passive:true});
+      carousel.addEventListener('touchend',()=>intervals.set(carousel,setInterval(tick,2500)));
     }
   });
 
-  // ====== Lightbox ======
+  // Lightbox
   const lb = document.getElementById('lightbox');
   const lbImg = document.getElementById('lbImg');
   let currentGallery = 1, currentIndex = 0;
