@@ -250,13 +250,19 @@
   document.getElementById('year').textContent = new Date().getFullYear();
 
   // ====== Définition des galeries (noms de fichiers dans /assets) ======
+<script>
+  // Année footer
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ====== Définition des galeries (noms de fichiers dans /assets) ======
   const galleries = {
     1: ["chantier1-1.jpg","chantier1-2.jpg","chantier1-3.jpg","chantier1-4.jpg","chantier1-5.jpg","chantier1-6.jpg","chantier1-7.jpg"],
     2: ["chantier2-1.jpg","chantier2-2.jpg","chantier2-3.jpg","chantier2-4.jpg"],
-    3: ["chantier3-1.jpg","chantier3-2.jpg","chantier3-3.jpg","chantier3-4.jpg","chantier3-5.jpg","chantier3-6.jpg","chantier3-7.jpg","chantier3-8.jpg","chantier3-9.jpg"],
-    4: ["chantier4-1.jpg","chantier4-2.jpg","chantier4-3.jpg","chantier4-4.jpg"]
+    3: ["chantier3-1.jpg","chantier3-2.jpg","chantier3-3.jpg","chantier3-4.jpg","chantier3-5.jpg","chantier3-6.jpg","chantier3-7.jpg","chantier3-8.jpg","chantier3-9.jpg","chantier3-10.jpg"],
+    4: ["chantier4-1.jpg","chantier4-2.jpg","chantier4-3.jpg","chantier4-4.jpg","chantier4-5.jpg","chantier4-6.jpg"]
   };
-
+  /* ... le reste du script inchangé ... */
+</script>
   // ====== Construction des carrousels ======
   const carousels = document.querySelectorAll('.carousel');
   const intervals = new Map(); // pour pause/reprise
