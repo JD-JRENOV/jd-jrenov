@@ -1,0 +1,261 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>J’RÉNOV — Électricité & Aménagement intérieur</title>
+  <meta name="description" content="Électricité générale, placo & aménagement intérieur. Dépannages 7j/7, finitions soignées, devis gratuit.">
+  <meta property="og:title" content="J’RÉNOV — Électricité & Aménagement intérieur" />
+  <meta property="og:description" content="Tableaux, prises, éclairage, faux-plafonds, cloisons, rénovations. Intervention locale." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/assets/logo-jd-jrenov.png" />
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="google-site-verification" content="PASTE_SEARCH_CONSOLE_CODE_HERE" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <style>
+    :root{--bg:#0f172a;--ink:#0f172a;--muted:#64748b;--brand:#2563eb;--gold:#d4af37}
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif;color:var(--ink);background:#f8fafc}
+    a{color:var(--brand);text-decoration:none}
+    .container{max-width:1150px;margin:0 auto;padding:0 20px}
+    header{position:sticky;top:0;z-index:50;backdrop-filter:saturate(180%) blur(8px);background:rgba(255,255,255,.85);border-bottom:1px solid #e5e7eb}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .logo{display:flex;align-items:center;gap:12px}
+    .logo img{width:38px;height:38px;border-radius:10px;object-fit:cover}
+    .logo strong{letter-spacing:.3px}
+    .btn{display:inline-block;padding:14px 20px;border-radius:14px;font-weight:700;background:var(--brand);color:#fff;border:2px solid var(--brand);transition:.2s}
+    .btn:hover{filter:brightness(.95);transform:translateY(-1px)}
+    .btn.alt{background:transparent;color:var(--brand)}
+    .chip{display:inline-flex;align-items:center;gap:8px;background:#e2e8f0;color:#0f172a;padding:8px 12px;border-radius:999px;font-size:12px;font-weight:700}
+    .hero{padding:72px 0 36px;background:linear-gradient(180deg,#ffffff, #f1f5f9)}
+    .hero-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
+    .card{background:#fff;border:1px solid #e5e7eb;border-radius:18px;padding:22px;box-shadow:0 1px 0 rgba(15,23,42,.04)}
+    .list{display:grid;gap:8px}
+    .list li{display:flex;gap:10px;align-items:flex-start}
+    .list li span{color:var(--brand)}
+    .sect{padding:56px 0}
+    h1{font-size:clamp(28px,4vw,48px);line-height:1.08;margin:0 0 10px}
+    h2{font-size:28px;margin:0 0 14px}
+    .muted{color:var(--muted)}
+    /* Slider */
+    .carousel{position:relative;border-radius:16px;overflow:hidden;border:1px solid #e5e7eb;background:#fff}
+    .slides{position:relative;height:0;padding-bottom:58%;}
+    .slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s}
+    .slides img.active{opacity:1}
+    .c-controls{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-top:1px solid #e5e7eb;background:#fff}
+    .c-title{font-weight:700}
+    .c-dots{display:flex;gap:6px}
+    .dot{width:8px;height:8px;border-radius:50%;background:#cbd5e1}
+    .dot.active{background:var(--brand)}
+    .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    /* WhatsApp fixed top-right */
+    .wa-float{position:fixed;right:18px;top:18px;display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;padding:12px 16px;border-radius:999px;box-shadow:0 10px 25px rgba(0,0,0,.18);z-index:999;font-weight:800}
+    .wa-float svg{width:20px;height:20px}
+    footer{padding:36px 0;border-top:1px solid #e5e7eb;background:#fff}
+    .foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px}
+    .badges{display:flex;gap:12px;flex-wrap:wrap}
+    input, textarea{width:100%;padding:14px 16px;border:1px solid #cbd5e1;border-radius:14px;font:inherit}
+    textarea{min-height:120px}
+    @media (max-width:980px){.hero-grid{grid-template-columns:1fr}.grid4{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}}
+    @media (max-width:640px){.grid4{grid-template-columns:1fr}}
+  </style>
+  <!-- GA4 (remplacez G-XXXXXXXXXX) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config','G-XXXXXXXXXX');</script>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <img src="/assets/logo-jd-jrenov.png" alt="JD J’RÉNOV" />
+        <div><strong>JD J’RÉNOV</strong><br><small class="muted">Électricité & Aménagement intérieur</small></div>
+      </div>
+      <nav style="display:flex;gap:18px">
+        <a href="#services">Services</a>
+        <a href="#realisations">Réalisations</a>
+        <a href="#contact">Contact</a>
+        <a class="btn" href="#devis">Devis gratuit</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="chip">⚡ Dépannage 7j/7 • Devis sous 24h</span>
+        <h1>Électricité & rénovation intérieure<br/>travaux soignés, délais respectés</h1>
+        <p class="muted">Tableaux électriques, mises en conformité, éclairage, prises & réseaux. Cloisons, doublages, faux-plafonds, finitions.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn" href="#devis">Demander un devis</a>
+          <a class="btn alt" href="#services">Voir nos services</a>
+        </div>
+        <p class="muted" style="margin-top:10px">Assuré & garanti • Intervention locale • Respect des normes NF C 15-100</p>
+      </div>
+      <div class="card">
+        <h3>Interventions courantes</h3>
+        <ul class="list">
+          <li><span>•</span><div><strong>Électricité générale</strong> — circuits, tableaux, différentiel, prises & éclairage.</div></li>
+          <li><span>•</span><div><strong>Dépannage</strong> — recherche de panne, remise en service, sécurité.</div></li>
+          <li><span>•</span><div><strong>Placo</strong> — cloisons, doublages, <em>faux-plafonds</em>, corniches lumineuses.</div></li>
+          <li><span>•</span><div><strong>Rénovation</strong> — cuisine, salle de bain, pièces à vivre.</div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="sect">
+    <div class="container">
+      <h2>Nos services</h2>
+      <div class="grid4">
+        <div class="card"><h3>Électricité générale</h3><p class="muted">Tableaux, circuits, VMC, prises, éclairage intérieur/extérieur, domotique. Mise aux normes NF C 15-100.</p></div>
+        <div class="card"><h3>Dépannage & sécurité</h3><p class="muted">Diagnostic, recherche de panne, remplacement urgent, protections différentielles.</p></div>
+        <div class="card"><h3>Placo & aménagement</h3><p class="muted">Cloisons, isolation, doublages, faux-plafonds, niches, habillages pour spots LED.</p></div>
+        <div class="card"><h3>Éclairage & ambiances</h3><p class="muted">Rails, spots encastrés, rubans LED, variateurs, scénarios lumineux.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="realisations" class="sect" style="padding-top:0">
+    <div class="container">
+      <h2>Réalisations</h2>
+      <div class="grid2">
+        <!-- Chantier 1 -->
+        <div class="carousel" data-name="Salon et charpente apparentes">
+          <div class="slides">
+            <img src="/assets/chantier1-1.jpg" alt="Chantier 1 - 1" class="active">
+            <img src="/assets/chantier1-2.jpg" alt="Chantier 1 - 2">
+            <img src="/assets/chantier1-3.jpg" alt="Chantier 1 - 3">
+          </div>
+          <div class="c-controls">
+            <div class="c-title">Salon et charpente apparentes</div>
+            <div class="c-dots"></div>
+          </div>
+        </div>
+        <!-- Chantier 2 -->
+        <div class="carousel" data-name="Aménagement d’un salon de barbier — Le Barbier Rennais">
+          <div class="slides">
+            <img src="/assets/chantier2-1.jpg" alt="Chantier 2 - 1" class="active">
+            <img src="/assets/chantier2-2.jpg" alt="Chantier 2 - 2">
+            <img src="/assets/chantier2-3.jpg" alt="Chantier 2 - 3">
+          </div>
+          <div class="c-controls">
+            <div class="c-title">Aménagement d’un salon de barbier — <em>Le Barbier Rennais</em></div>
+            <div class="c-dots"></div>
+          </div>
+        </div>
+        <!-- Chantier 3 -->
+        <div class="carousel" data-name="Maison neuve — élec, placo & finitions">
+          <div class="slides">
+            <img src="/assets/chantier3-1.jpg" alt="Chantier 3 - 1" class="active">
+            <img src="/assets/chantier3-2.jpg" alt="Chantier 3 - 2">
+            <img src="/assets/chantier3-3.jpg" alt="Chantier 3 - 3">
+          </div>
+          <div class="c-controls">
+            <div class="c-title">Maison neuve — élec, placo & finitions</div>
+            <div class="c-dots"></div>
+          </div>
+        </div>
+        <!-- Chantier 4 -->
+        <div class="carousel" data-name="Salle de bain & niches — pierre et parement">
+          <div class="slides">
+            <img src="/assets/chantier4-1.jpg" alt="Chantier 4 - 1" class="active">
+            <img src="/assets/chantier4-2.jpg" alt="Chantier 4 - 2">
+            <img src="/assets/chantier4-3.jpg" alt="Chantier 4 - 3">
+          </div>
+          <div class="c-controls">
+            <div class="c-title">Salle de bain & niches — pierre et parement</div>
+            <div class="c-dots"></div>
+          </div>
+        </div>
+      </div>
+      <p class="muted" style="margin-top:10px">Remplacez les images dans <code>/assets/chantierX-Y.jpg</code> par vos photos (même noms de fichier), elles seront automatiquement intégrées aux diaporamas.</p>
+    </div>
+  </section>
+
+  <section id="devis" class="sect" style="background:linear-gradient(180deg,#0b1220, #0f172a);color:#fff">
+    <div class="container grid2">
+      <div>
+        <h2>Demander un devis gratuit</h2>
+        <p style="opacity:.9">Décrivez votre besoin et recevez une estimation sous 24h (hors cas complexes). Intervention locale.</p>
+        <ul class="list">
+          <li><span>•</span><div>Devis clair & détaillé</div></li>
+          <li><span>•</span><div>Matériaux pros (Legrand, Schneider, etc.)</div></li>
+          <li><span>•</span><div>Respect des normes & des délais</div></li>
+        </ul>
+      </div>
+      <div>
+        <form action="https://formsubmit.co/contact.jdjrenov@gmail.com" method="POST">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" value="/?sent=1">
+          <input type="hidden" name="_subject" value="Demande de devis — JD J’RÉNOV">
+          <input type="hidden" name="_template" value="table">
+          <input name="Nom" placeholder="Nom" required />
+          <input name="Téléphone" placeholder="Téléphone" />
+          <input type="email" name="Email" placeholder="Email" required />
+          <textarea name="Message" placeholder="Décrivez vos travaux (surface, pièces, délais)…" required></textarea>
+          <button class="btn" type="submit">Envoyer ma demande</button>
+          <div class="muted" style="color:#cbd5e1;font-size:12px">En cliquant, vous acceptez d’être recontacté. Nous ne partageons pas vos données.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+    <div class="container foot">
+      <div class="logo" style="gap:10px">
+        <img src="/assets/logo-jd-jrenov.png" alt="JD J’RÉNOV" />
+        <div>
+          <strong>JD J’RÉNOV</strong><br/>
+          <small class="muted">Électricité & Aménagement intérieur</small>
+        </div>
+      </div>
+      <div class="badges">
+        <small>📞 <a href="tel:+33652666837">06 52 66 68 37</a></small>
+        <small>✉️ <a href="mailto:contact.jdjrenov@gmail.com">contact.jdjrenov@gmail.com</a></small>
+        <small>📍 24 RUE DES BAS GASTS, 35240 MARCILLÉ-ROBERT</small>
+        <small>SIREN : 992 695 122 • SIRET : 992 695 122 00018 • TVA : FR11992695122</small>
+      </div>
+    </div>
+    <div class="container" style="margin-top:12px">
+      <small class="muted">© <span id="y"></span> J’RÉNOV — Tous droits réservés • <a href="#" rel="nofollow">Mentions légales</a> • <a href="#" rel="nofollow">Politique de confidentialité</a></small>
+    </div>
+  </footer>
+
+  <a class="wa-float" href="https://wa.me/33652666837?text=Bonjour%20JD%20J%E2%80%99R%C3%89NOV%2C%20je%20souhaite%20un%20devis" target="_blank" rel="noopener" aria-label="Discuter sur WhatsApp">
+    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path fill="currentColor" d="M19.11 17.2c-.28-.14-1.62-.8-1.87-.9-.25-.09-.43-.14-.62.14-.18.28-.71.88-.87 1.06-.16.18-.32.2-.6.07-.28-.14-1.18-.44-2.25-1.41-.83-.74-1.39-1.66-1.55-1.94-.16-.28-.02-.43.12-.57.12-.12.28-.32.41-.48.14-.16.18-.28.28-.46.09-.18.05-.34-.02-.48-.07-.14-.62-1.5-.85-2.05-.22-.53-.45-.46-.62-.46-.16 0-.34-.02-.53-.02-.18 0-.48.07-.73.34-.25.28-.96.94-.96 2.3s.98 2.66 1.12 2.84c.14.18 1.93 2.95 4.68 4.02.65.28 1.16.45 1.56.57.65.21 1.24.18 1.7.11.52-.08 1.62-.66 1.85-1.3.23-.64.23-1.19.16-1.3-.07-.11-.25-.18-.53-.32z"/></svg>
+    WhatsApp
+  </a>
+
+  <script>
+    // Simple carousels
+    document.querySelectorAll('.carousel').forEach(function(c){
+      const slides = Array.from(c.querySelectorAll('.slides img'));
+      const dotsWrap = c.querySelector('.c-dots');
+      let i = 0;
+      slides.forEach((_, idx)=>{
+        const d = document.createElement('div'); d.className='dot'+(idx===0?' active':''); dotsWrap.appendChild(d);
+        d.addEventListener('click', ()=>{ i=idx; update(); });
+      });
+      function update(){
+        slides.forEach((im,idx)=> im.classList.toggle('active', idx===i));
+        dotsWrap.querySelectorAll('.dot').forEach((d,idx)=> d.classList.toggle('active', idx===i));
+      }
+      setInterval(()=>{ i=(i+1)%slides.length; update(); }, 3500);
+    });
+    // Toast after form
+    if (new URLSearchParams(location.search).get('sent') === '1') {
+      const ok = document.createElement('div');
+      ok.textContent = 'Merci ! Votre demande a bien été envoyée.';
+      ok.style.cssText = 'position:fixed;left:50%;transform:translateX(-50%);bottom:18px;background:#16a34a;color:#fff;padding:12px 16px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,.15);z-index:1000';
+      document.body.appendChild(ok); setTimeout(()=>ok.remove(), 5000); history.replaceState({},'', location.pathname);
+    }
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
