@@ -154,23 +154,37 @@
       margin-top: 60px;
     }
 
-    /* ---- Lightbox ---- */
+    /* ---- Lightbox avec animation ---- */
     .lb {
       position: fixed;
       inset: 0;
       background: rgba(0,0,0,0.95);
-      display: none;
+      display: flex;
       align-items: center;
       justify-content: center;
       z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
     }
 
-    .lb.open { display: flex; }
+    .lb.open {
+      opacity: 1;
+      pointer-events: all;
+    }
 
     .lb img {
       max-width: 90vw;
       max-height: 85vh;
       border-radius: 12px;
+      transform: scale(0.97);
+      opacity: 0;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .lb.open img {
+      transform: scale(1);
+      opacity: 1;
     }
 
     .lb .close, .lb .prev, .lb .next {
@@ -256,10 +270,10 @@
   </div>
 
   <script>
-    // Lightbox
+    // Lightbox avec effet fondu
     const LB = {
       el:null,img:null,count:null,prev:null,next:null,close:null,list:[],idx:0,
-      open(list,start=0){this.list=list;this.idx=start;this.el.classList.add('open');this.render();},
+      open(list,start=0){this.list=list;this.idx=start;this.render();this.el.classList.add('open');},
       closeBox(){this.el.classList.remove('open');},
       render(){this.img.src=this.list[this.idx];this.count.textContent=(this.idx+1)+' / '+this.list.length;},
       nextImg(){this.idx=(this.idx+1)%this.list.length;this.render();},
@@ -276,10 +290,11 @@
     };
     LB.init();
 
-    // Galerie
+    // Galerie images
     const galleryImgs=document.querySelectorAll('#realisations img');
     const allSrc=[...galleryImgs].map(i=>i.src);
     galleryImgs.forEach((img,i)=>img.addEventListener('click',()=>LB.open(allSrc,i)));
   </script>
 </body>
 </html>
+
